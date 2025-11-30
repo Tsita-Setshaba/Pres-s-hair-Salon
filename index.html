@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious's Hair Salon</title>
+    <style>
+        /*
+        ========================================
+        EASY CUSTOMIZATION GUIDE
+        ========================================
+        
+        1. TO ADD BACKGROUND IMAGES:
+           - Find where it says "url('URL_HERE')" 
+           - Replace URL_HERE with your image link
+           - Example: url('https://i.imgur.com/yourimage.jpg')
+           - Or use: url('salon-background.jpg') if image is in same folder
+        
+        2. TO ADD PORTFOLIO PHOTOS:
+           - Scroll down to the gallery section
+           - Replace <div class="placeholder-img">💇‍♀️</div>
+           - With: <img src="your-photo.jpg" alt="Hairstyle">
+        
+        3. TO CHANGE WHATSAPP NUMBER:
+           - Find: wa.me/27XXXXXXXXX
+           - Replace with your number (e.g., wa.me/27821234567)
+        
+        4. TO ADD GOOGLE FORM:
+           - Find: forms.google.com/YOUR_FORM_ID
+           - Replace with your actual Google Form link
+        
+        5. TO CHANGE PRICES:
+           - Find: <div class="price">R XXX</div>
+           - Change the amount to whatever you want
+        
+        6. TO CHANGE COLORS:
+           - Find: #667eea and #764ba2 (current purple colors)
+           - Replace with your preferred color codes
+        
+        ========================================
+        */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            /* CHANGE HEADER IMAGE: Replace 'URL_HERE' with your image link */
+            background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), 
+                        url('URL_HERE');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            /* CHANGE BACKGROUND IMAGE: Replace 'URL_HERE' with your image link */
+            background: url('Precious.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Portfolio Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #f5f5f5;
+            height: 350px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(102, 126, 234, 0.95), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Placeholder image styling */
+        .placeholder-img {
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #667eea;
+        }
+
+        /* Services/Prices */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: #764ba2;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .booking-section h2 {
+            color: white;
+        }
+
+        .booking-section h2::after {
+            background: white;
+        }
+
+        .booking-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .booking-btn {
+            background: white;
+            color: #667eea;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✨ Precious's Hair Salon ✨</h1>
+        <p>Where Beauty Meets Excellence</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Our Work</a></li>
+            <li><a href="#services">Services & Prices</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Transform Your Look Today</h2>
+            <p>Professional hairstyling with a personal touch</p>
+            <a href="#booking" class="cta-button">Book Your Appointment</a>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>Our Previous Work</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="placeholder-img">💇‍♀️</div>
+                    <div class="gallery-overlay">
+                        <h3>Box Braids</h3>
+                        <p>Beautiful protective styling</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder-img">💁‍♀️</div>
+                    <div class="gallery-overlay">
+                        <h3>Weave Installation</h3>
+                        <p>Seamless and natural look</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder-img">👩‍🦱</div>
+                    <div class="gallery-overlay">
+                        <h3>Natural Hair Styling</h3>
+                        <p>Embrace your natural beauty</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder-img">💆‍♀️</div>
+                    <div class="gallery-overlay">
+                        <h3>Twist Outs</h3>
+                        <p>Perfect curls every time</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder-img">👸</div>
+                    <div class="gallery-overlay">
+                        <h3>Wig Styling</h3>
+                        <p>Custom wig installation</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder-img">✨</div>
+                    <div class="gallery-overlay">
+                        <h3>Bridal Hair</h3>
+                        <p>Make your special day perfect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Services & Prices</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Box Braids</h3>
+                    <p>Classic protective style with long-lasting results. Includes wash, blow-dry, and styling.</p>
+                    <div class="price">R 800</div>
+                </div>
+                <div class="service-card">
+                    <h3>Weave Installation</h3>
+                    <p>Professional sew-in weave with natural blend. Choose your preferred length and texture.</p>
+                    <div class="price">R 1,200</div>
+                </div>
+                <div class="service-card">
+                    <h3>Natural Hair Styling</h3>
+                    <p>Deep conditioning treatment with styling of your choice. Healthy hair guaranteed.</p>
+                    <div class="price">R 450</div>
+                </div>
+                <div class="service-card">
+                    <h3>Cornrows</h3>
+                    <p>Neat and intricate cornrow designs. Various patterns available.</p>
+                    <div class="price">R 600</div>
+                </div>
+                <div class="service-card">
+                    <h3>Wig Installation</h3>
+                    <p>Custom wig styling and secure installation. Looks natural and feels comfortable.</p>
+                    <div class="price">R 900</div>
+                </div>
+                <div class="service-card">
+                    <h3>Bridal Package</h3>
+                    <p>Complete bridal hair service including trial session. Make your day unforgettable.</p>
+                    <div class="price">R 2,500</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <h2>Ready to Book?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Choose your preferred booking method below</p>
+            <div class="booking-options">
+                <a href="https://wa.me/27XXXXXXXXX?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment" class="booking-btn" target="_blank">
+                    📱 Book via WhatsApp
+                </a>
+                <a href="https://forms.google.com/YOUR_FORM_ID" class="booking-btn" target="_blank">
+                    📝 Book via Form
+                </a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.9;">We'll confirm your appointment within 24 hours</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p><strong>Precious's Hair Salon</strong></p>
+            <p>📍 Johannesburg, Gauteng</p>
+            <p>📞 Contact: +27 XX XXX XXXX</p>
+            <p>⏰ Hours: Mon-Sat 9AM - 6PM</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2025 Glamour Hair Salon. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
